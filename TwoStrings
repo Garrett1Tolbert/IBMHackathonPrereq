@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the twoStrings function below.
+string twoStrings(string s1, string s2) {
+    bool foundSub = false;
+    int s1size = sizeof(s1)/sizeof(s1[0]);
+    int s2size = sizeof(s2)/sizeof(s2[0]);
+    
+    for(int i = 0; i < s1size; i++) {
+        for(int j = 0; j < s2size; j++) {
+            if(isalpha(s1[i]) && isalpha(s2[j]))
+            {
+                if(s1[i] == s2[j]) {
+                    cout << "MATCH @ index: " << i << "(" << s1[i] << ") in " << s1 << " AND "<< j << "(" << s2[j] << ") in " << s2 << endl; 
+                    foundSub = true;
+                    return "YES";
+                }
+            }
+        }
+    }
+    if(foundSub == false)
+        return "NO";
+    else
+        return "YES";
+} 
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int q;
+    cin >> q;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    for (int q_itr = 0; q_itr < q; q_itr++) {
+        string s1;
+        getline(cin, s1);
+
+        string s2;
+        getline(cin, s2);
+
+        string result = twoStrings(s1, s2);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
+
